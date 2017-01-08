@@ -2,7 +2,7 @@
     <div class="media">
         <div class="media-left">
             <a href="#">
-                <img class="media-object" v-bind:src="photo.path" v-bind:alt="photo.name"/>
+                <img class="media-object" height="50px" v-bind:src="photo.path" v-bind:alt="photo.name"/>
             </a>
         </div>
         <div class="media-body">

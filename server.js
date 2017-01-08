@@ -24,15 +24,17 @@ const router = express.Router();              // get an instance of the express 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/photos', cors(), (req, res) =>
     readdir('static/photos')
-        .then(files => res.json(files.map(file => ({ name: file, path: `/photos/${file}` })))));
+        .then(files => res.json(files.map(file => ({ name: file, path: `static/photos/${file}` })))));
 
+router.get('/photos/:id', cors(), (req, res) => {
+  readFile(`/static/photos/${req.params.id}`).then(file => res.send(file.toString()));
+});
 
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-app.use(express.static('static'));
 app.use(cors());
 
 // START THE SERVER
