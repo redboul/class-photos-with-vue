@@ -1,21 +1,7 @@
 <template>
-  <v-app top-navbar>
-    <header>
-      <div id="navbar-image">
-        <v-navbar class="transparent z-depth-0">
-          <v-navbar-logo>Jeanne Labourbe</v-navbar-logo>
-          <v-navbar-items v-bind:items="classes"></v-navbar-items>
-        </v-navbar>
-      </div>
-    </header>
-    <main>
-      <v-content>
-        <v-container fluid>
-          <router-view></router-view>
-        </v-container>
-      </v-content>
-    </main>
-  </v-app>
+  <p>
+    coucou {{classes}}
+  </p>
 </template>
 
 <script>
@@ -37,13 +23,11 @@ export default {
       }],
     };
   },
-  mounted() {
-    this.$vuetify.init();
-  },
+  render: h => h(),
 };
 </script>
 <style lang="scss">
-@import '../node_modules/vuetify/dist/vuetify.min.css';
+@import '../node_modules/material-design-lite/material.min.css';
 
 body {
   font-family: "Open Sans";

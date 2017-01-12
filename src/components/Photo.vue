@@ -1,5 +1,5 @@
 <template>
-    <div  v-on:click="openModal">
+    <div>
         <v-card horizontal class="PhotoCards" v-bind:class="getColor()">
             <v-card-row  v-bind:img="photo.path" height="125px"></v-card-row>
             <v-card-column>
@@ -7,12 +7,23 @@
                     <p>{{photo.name}}</p>
                 </v-card-text>
                 <v-card-row actions>
-                    <v-btn flat class="secondary--text"><v-icon left>add_shopping_cart</v-icon> Commander </v-btn>
+                    <v-btn flat v-modal:modal   class="secondary--text"><v-icon left>add_shopping_cart</v-icon> Commander </v-btn>
                 </v-card-row>
             </v-card-column>
         </v-card>
         <v-modal id="modal">
-            coucou !
+            <v-card>
+                <v-card-text>
+                <p class="text-xs-center">What is your age?</p>
+                <v-select v-bind:options="[{ text: '10-19', value: 1 }, { text: '20+', value: 2 }]" label="What is your age?"></v-select>
+                <p>This information is used to improve your experience on our site.</p>
+                </v-card-text>
+                <v-card-row actions>
+                <v-btn v-on:click.native="modal('modal')">Cancel</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn v-on:click.native="modal('modal')" class="green white--text">Submit</v-btn>
+                </v-card-row>
+            </v-card>
         </v-modal>
     </div>
 </template>
@@ -38,7 +49,6 @@ export default {
         }
       },
       openModal: () => {
-        console.log('click');
         this.$vuetify.bus.pub('modal:open:modal');
       },
     };
