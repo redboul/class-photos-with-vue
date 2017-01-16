@@ -1,6 +1,8 @@
 <template>
-    <div >
-        <Photo v-bind:content="item" v-bind:index="index" v-for="(item, index) in items"></Photo>
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--3-col" v-for="(item, index) in items">
+        <Photo v-bind:content="item" v-bind:index="index" ></Photo>
+      </div>
     </div>
 </template>
 <script>

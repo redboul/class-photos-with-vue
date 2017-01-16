@@ -13,7 +13,7 @@
         </v-card> -->
     <div class="demo-card-event mdl-card mdl-shadow--2dp">
         <div class="mdl-card__title mdl-card--expand">
-            <img :src="photo.path" height="125px"/>
+            <img :src="photo.path" class="img-responsive"/>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -50,12 +50,15 @@ export default {
 };
 </script>
 <style lang="scss">
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 .demo-card-event {
     margin: 10px;
 }
 .demo-card-event.mdl-card {
-  width: 256px;
-  height: 256px;
   background: #3E4EB8;
 }
 .demo-card-event > .mdl-card__actions {
