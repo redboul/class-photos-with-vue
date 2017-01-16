@@ -4,17 +4,21 @@ import 'material-design-lite';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueResource from 'vue-resource';
+import { sync } from 'vuex-router-sync';
+
+import store from './store/index';
+import router from './router/index';
 
 import App from './App';
 
-// sync(store, router);
+sync(store, router);
 
 Vue.use(Vuex);
 Vue.use(VueResource);
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  render: h => h(App),
-});
+new Vue(Vue.util.extend({
+  router,
+  store,
+}, App)).$mount('#app');
 

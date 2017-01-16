@@ -1,11 +1,7 @@
 <template>
-  <v-row>
-    <v-col xs12 sm6 md4 lg3 v-for="(item, index) in items">
-        <div >
-            <Photo v-bind:content="item" v-bind:index="index"></Photo>
-        </div>
-    </v-col>
-  </v-row>
+    <div >
+        <Photo v-bind:content="item" v-bind:index="index" v-for="(item, index) in items"></Photo>
+    </div>
 </template>
 <script>
 import Photo from './Photo';

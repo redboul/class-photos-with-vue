@@ -1,5 +1,5 @@
 <template>
-    <div>
+   <!-- <div>
         <v-card horizontal class="PhotoCards" v-bind:class="getColor()">
             <v-card-row  v-bind:img="photo.path" height="125px"></v-card-row>
             <v-card-column>
@@ -10,21 +10,18 @@
                     <v-btn flat v-modal:modal   class="secondary--text"><v-icon left>add_shopping_cart</v-icon> Commander </v-btn>
                 </v-card-row>
             </v-card-column>
-        </v-card>
-        <v-modal id="modal">
-            <v-card>
-                <v-card-text>
-                <p class="text-xs-center">What is your age?</p>
-                <v-select v-bind:options="[{ text: '10-19', value: 1 }, { text: '20+', value: 2 }]" label="What is your age?"></v-select>
-                <p>This information is used to improve your experience on our site.</p>
-                </v-card-text>
-                <v-card-row actions>
-                <v-btn v-on:click.native="modal('modal')">Cancel</v-btn>
-                <v-spacer></v-spacer>
-                <v-btn v-on:click.native="modal('modal')" class="green white--text">Submit</v-btn>
-                </v-card-row>
-            </v-card>
-        </v-modal>
+        </v-card> -->
+    <div class="demo-card-event mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <img :src="photo.path" height="125px"/>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Add to Calendar
+            </a>
+            <div class="mdl-layout-spacer"></div>
+            <i class="material-icons">event</i>
+        </div>
     </div>
 </template>
 <script>
@@ -48,16 +45,39 @@ export default {
           default: return ['lime', 'darken-1'];
         }
       },
-      openModal: () => {
-        this.$vuetify.bus.pub('modal:open:modal');
-      },
     };
   },
 };
 </script>
 <style lang="scss">
-.PhotoCards {
-    margin: 1rem;
-    color: white;
+.demo-card-event {
+    margin: 10px;
+}
+.demo-card-event.mdl-card {
+  width: 256px;
+  height: 256px;
+  background: #3E4EB8;
+}
+.demo-card-event > .mdl-card__actions {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.demo-card-event > .mdl-card__title {
+  align-items: flex-start;
+}
+.demo-card-event > .mdl-card__title > h4 {
+  margin-top: 0;
+}
+.demo-card-event > .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+.demo-card-event > .mdl-card__actions > .material-icons {
+  padding-right: 10px;
+}
+.demo-card-event > .mdl-card__title,
+.demo-card-event > .mdl-card__actions,
+.demo-card-event > .mdl-card__actions > .mdl-button {
+  color: #fff;
 }
 </style>

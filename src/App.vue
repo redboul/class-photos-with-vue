@@ -1,7 +1,21 @@
 <template>
-  <p>
-    coucou {{classes}}
-  </p>
+  <div class="mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+      <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Jeanne Labourbe</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+        <nav class="mdl-navigation mdl-js-ripple-effect">
+          <a v-for="classe in classes" class="mdl-navigation__link" :href="classe.href">{{classe.text}}</a>
+        </nav>
+    </div>
+    </header>
+    <main>
+          <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -23,7 +37,6 @@ export default {
       }],
     };
   },
-  render: h => h(),
 };
 </script>
 <style lang="scss">
