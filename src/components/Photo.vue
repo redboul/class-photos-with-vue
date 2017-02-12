@@ -16,11 +16,10 @@
             <img :src="photo.path" class="img-responsive"/>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Add to Calendar
+            <a @click="openOrderModal()" class="mdl-card-actions--allWidth mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">add_shopping_cart</i>
+            Commander
             </a>
-            <div class="mdl-layout-spacer"></div>
-            <i class="material-icons">event</i>
         </div>
     </div>
 </template>
@@ -45,11 +44,17 @@ export default {
           default: return ['lime', 'darken-1'];
         }
       },
+      openOrderModal() {
+        console.log('coucou !');
+      },
     };
   },
 };
 </script>
 <style lang="scss">
+.demo-card-event.mdl-card {
+  width: 100%;
+}
 .img-responsive {
     max-width: 100%;
     height: auto;
@@ -74,6 +79,7 @@ export default {
   display: flex;
   box-sizing:border-box;
   align-items: center;
+
 }
 .demo-card-event > .mdl-card__actions > .material-icons {
   padding-right: 10px;
@@ -82,5 +88,9 @@ export default {
 .demo-card-event > .mdl-card__actions,
 .demo-card-event > .mdl-card__actions > .mdl-button {
   color: #fff;
+}
+
+.mdl-card-actions--allWidth {
+  width: 100%
 }
 </style>

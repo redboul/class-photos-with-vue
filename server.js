@@ -23,7 +23,7 @@ const router = express.Router();              // get an instance of the express 
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/photos', cors(), (req, res) =>
-    readdir('static/photos')
+    readdir('static/blurred')
         .then(files => res.json(files.map(file => ({ name: file, path: `static/photos/${file}` })))));
 
 router.get('/photos/:id', cors(), (req, res) => {
