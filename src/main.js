@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'material-design-lite';
 import Vue from 'vue';
-import Vuex from 'vuex';
 import VueResource from 'vue-resource';
 import { sync } from 'vuex-router-sync';
 
@@ -13,12 +12,14 @@ import App from './App';
 
 sync(store, router);
 
-Vue.use(Vuex);
 Vue.use(VueResource);
 
 /* eslint-disable no-new */
-new Vue(Vue.util.extend({
+new Vue({
+  el: '#app',
   router,
   store,
-}, App)).$mount('#app');
+  template: '<App/>',
+  components: { App },
+});
 

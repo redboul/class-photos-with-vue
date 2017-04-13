@@ -1,9 +1,10 @@
 <template>
-    <div class="dialogOrderOption">
+    <div class="dialogOrderOption" v-if="name">
         <div class="dialogOrderOptionOverlay">
         </div>
         <div class="mdl-dialog">
             <div class="mdl-dialog__content">
+                <h6>{{ name }}</h6>
                 <p>
                     This is an example of the MDL Dialog being used as a modal.
                     It is using the full width action design intended for use with buttons
@@ -11,18 +12,27 @@
                 </p>
             </div>
             <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                <button type="button" class="mdl-button">Close</button>
+                <button @click="unselectPhoto()" type="button" class="mdl-button">Close</button>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
+  computed: {
+    name() {
+      return this.$store.getters.selectedPictureName;
+    },
+  },
+  methods: {
+    ...mapMutations(['unselectPhoto']),
+  },
 };
 </script>
 <style lang="scss">
 .mdl-dialog {
-    display: none;
     position: fixed;
     left: 40%;
     top: 25%;

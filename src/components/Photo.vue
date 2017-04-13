@@ -16,7 +16,7 @@
             <img :src="photo.path" class="img-responsive"/>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-            <a @click="openOrderModal()" class="mdl-card-actions--allWidth mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <a @click="selectPhoto({ name: photo.name })" class="mdl-card-actions--allWidth mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             <i class="material-icons">add_shopping_cart</i>
             Commander
             </a>
@@ -24,30 +24,34 @@
     </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props: ['content', 'index'],
   data() {
     return {
       photo: this.content,
-      getColor() {
-        switch (this.index % 10) {
-          case 0: return ['deep-orange', 'darken-1'];
-          case 1: return ['pink', 'darken-1'];
-          case 2: return ['amber', 'darken-1'];
-          case 3: return ['deep-purple', 'lighten-2'];
-          case 4: return ['black', 'darken-1'];
-          case 5: return ['yellow', 'lighten-1'];
-          case 6: return ['brown', 'darken-1'];
-          case 7: return ['grey', 'darken-1'];
-          case 8: return ['teal', 'darken-1'];
-          case 9:
-          default: return ['lime', 'darken-1'];
-        }
-      },
-      openOrderModal() {
-        console.log('coucou !');
-      },
     };
+  },
+  methods: {
+    getColor() {
+      switch (this.index % 10) {
+        case 0: return ['deep-orange', 'darken-1'];
+        case 1: return ['pink', 'darken-1'];
+        case 2: return ['amber', 'darken-1'];
+        case 3: return ['deep-purple', 'lighten-2'];
+        case 4: return ['black', 'darken-1'];
+        case 5: return ['yellow', 'lighten-1'];
+        case 6: return ['brown', 'darken-1'];
+        case 7: return ['grey', 'darken-1'];
+        case 8: return ['teal', 'darken-1'];
+        case 9:
+        default: return ['lime', 'darken-1'];
+      }
+    },
+    ...mapMutations([
+      'selectPhoto',
+    ]),
   },
 };
 </script>

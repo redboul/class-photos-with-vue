@@ -9,6 +9,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
 import Photo from './Photo';
 import OrderOptions from './OrderOptions';
 
@@ -17,13 +18,16 @@ export default {
     Photo,
     OrderOptions,
   },
-  data() {
-    return {
-      items: [],
-    };
+  computed: {
+    items() {
+      return this.$store.getters.pictures;
+    },
   },
   created() {
-    this.$http.get('http://localhost:9000/api/photos').then(response => (this.items = response.body));
+    this.retrievePhotos();
+  },
+  methods: {
+    ...mapActions(['retrievePhotos']),
   },
 };
 </script>
