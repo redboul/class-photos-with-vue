@@ -16,7 +16,7 @@
             <img :src="photo.path" class="img-responsive"/>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-            <a @click="selectPhoto({ name: photo.name })" class="mdl-card-actions--allWidth mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <a @click="selectPhoto({ photo })" class="mdl-card-actions--allWidth mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             <i class="material-icons">add_shopping_cart</i>
             Commander
             </a>

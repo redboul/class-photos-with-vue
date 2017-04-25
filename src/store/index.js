@@ -6,18 +6,21 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     pictures: [],
-    selectedPictureName: null,
+    selectedPicture: null,
   },
 
   getters: {
     pictures: state => state.pictures,
-    selectedPictureName: state => state.selectedPictureName,
+    selectedPicture: state => state.selectedPicture,
   },
 
   actions: {
     retrievePhotos({ commit }) {
-      Vue.http.get('http://localhost:9000/api/photos').then(response =>
-        commit('updatePhotos', { photos: response.body }));
+      Vue.http.get('http://localhost:9000/api/photos')
+      .then(response => response.body.map(photo =>
+        ({ couleur: null, noirEtBlanc: null, ...photo })))
+      .then(photos =>
+        commit('updatePhotos', { photos }));
     },
   },
 
@@ -26,11 +29,17 @@ export default new Vuex.Store({
     updatePhotos: (state, { photos }) => {
       state.pictures = photos;
     },
-    selectPhoto: (state, { name }) => {
-      state.selectedPictureName = name;
+    updateCouleur: (state, e) => {
+      state.selectedPicture.couleur = e.target.value;
+    },
+    updateNoirEtBlanc: (state, e) => {
+      state.selectedPicture.noirEtBlanc = e.target.value;
+    },
+    selectPhoto: (state, { photo }) => {
+      state.selectedPicture = photo;
     },
     unselectPhoto: (state) => {
-      state.selectedPictureName = null;
+      state.selectedPicture = null;
     },
   },
 });
