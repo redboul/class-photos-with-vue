@@ -39,3 +39,4 @@ static/photos
 static
 .directory
 photos
+**/*.JPG
